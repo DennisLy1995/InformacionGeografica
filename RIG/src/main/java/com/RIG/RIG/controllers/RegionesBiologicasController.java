@@ -82,7 +82,7 @@ public class RegionesBiologicasController {
 				
 				List<Animal> listaAnimales = new ArrayList<>();
 				for(Animales_RB e: animalesRegion) {
-					if(e.getNOMBRE_RB().equals(region)) {
+					if((e.getNOMBRE_RB().toLowerCase()).equals(region.toLowerCase())) {
 						Optional<Animal> temp = repoA.findById(e.getNOMBRE_CIENTIFICO());
 						Animal tempA = new Animal();
 						tempA.setNOMBRE_CIENTIFICO(temp.get().getNOMBRE_CIENTIFICO());
