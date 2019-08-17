@@ -41,7 +41,8 @@ public class AnimalesController {
 			List<Animal> listaAnimalesFiltro = new ArrayList<>();
 			
 			for(Animal e: listaAnimales) {
-				if(e.getNOMBRE_CIENTIFICO().contains(busqueda) || e.getNOMBRE_POPULAR().contains(busqueda)) {
+				if((e.getNOMBRE_CIENTIFICO().toLowerCase()).contains(busqueda.toLowerCase()) || 
+						(e.getNOMBRE_POPULAR().toLowerCase()).contains(busqueda.toLowerCase())) {
 					listaAnimalesFiltro.add(e);
 				}
 			}

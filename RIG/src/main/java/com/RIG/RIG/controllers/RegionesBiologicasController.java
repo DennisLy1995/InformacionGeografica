@@ -40,7 +40,25 @@ public class RegionesBiologicasController {
 		try {
 			return new ResponseEntity<>(repoRB.findAll(), HttpStatus.OK);
 		}catch(Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("There was a problem with the retrieval of the list.", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/searchBiologicalRegion")
+	public ResponseEntity<?> getPoliticRegionbyID(@RequestParam String busqueda) {
+		try {
+			List<Region_Biologica> listaRegiones = repoRB.findAll();
+			List<Region_Biologica> listaRegionesFiltro = new ArrayList<>();
+			
+			for(Region_Biologica e: listaRegiones) {
+				if((e.getNOMBRE_RB().toLowerCase()).contains(busqueda.toLowerCase())) {
+					listaRegionesFiltro.add(e);
+				}
+			}
+			
+			return new ResponseEntity<>(listaRegionesFiltro, HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>("There was a problem with the custom retrieval.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -49,7 +67,7 @@ public class RegionesBiologicasController {
 		try {
 			return new ResponseEntity<>(repoRB.save(region), HttpStatus.CREATED);
 		}catch(Exception e) {
-			return new ResponseEntity<>("There was a problem registering the biologica region.", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("There was a problem with the register of the biologic region.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
