@@ -11,14 +11,17 @@ public class Pais {
 	private String NOMBRE_P;
 	@Column
 	private String CONTINENTE;
+	@Column
+	private int RIG;
 	
 	
 	public Pais() {}
 	
-	public Pais(String nOMBRE_P, String cONTINENTE) {
+	public Pais(String nOMBRE_P, String cONTINENTE, int rIG) {
 		super();
 		NOMBRE_P = nOMBRE_P;
 		CONTINENTE = cONTINENTE;
+		RIG = rIG;
 	}
 
 	public String getNOMBRE_P() {
@@ -36,7 +39,13 @@ public class Pais {
 	public void setCONTINENTE(String cONTINENTE) {
 		CONTINENTE = cONTINENTE;
 	}
-	
-	
+
+	public int getRIG() {
+		return RIG;
+	}
+
+	public void setRIG(int rIG) {
+		RIG = rIG;
+	}
 	
 }

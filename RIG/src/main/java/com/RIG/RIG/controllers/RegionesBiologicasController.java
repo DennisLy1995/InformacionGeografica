@@ -95,7 +95,6 @@ public class RegionesBiologicasController {
 				
 			}
 			
-			
 		}catch(Exception e) {
 			return new ResponseEntity<>("There was a problem registering the biologica region.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
