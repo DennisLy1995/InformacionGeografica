@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.RIG.RIG.domain.REGB_X_REGP;
+import com.RIG.RIG.domain.Region_Biologica;
 import com.RIG.RIG.domain.Region_Politica;
 import com.RIG.RIG.repository.RegBiologicaXRegionPoliticaRepository;
 import com.RIG.RIG.repository.RegionPoliticaRepository;
@@ -26,7 +27,7 @@ public class RegionesPoliticasController {
 	
 	
 	@GetMapping
-	public ResponseEntity<?> getAllRegBio() {
+	public ResponseEntity<?> getAllPoliticRegions() {
 		try {
 			return new ResponseEntity<>(repoRP.findAll(), HttpStatus.OK);
 		}catch(Exception e) {
@@ -35,8 +36,19 @@ public class RegionesPoliticasController {
 	}
 	
 	
+	@PostMapping("/insertPoliticRegion")
+	public ResponseEntity<?> insertPoliticRegion(@RequestBody Region_Politica region) {
+		try {
+			return new ResponseEntity<>(repoRP.save(region), HttpStatus.CREATED);
+		}catch(Exception e) {
+			return new ResponseEntity<>("There was a problem registering the politic region.", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	
+	
 	@PostMapping
-	public ResponseEntity<?> LinkRegionBiologica_DeRegionPolitica(@RequestBody REGB_X_REGP region) {
+	public ResponseEntity<?> LinkBiologicRegion_PoliticRegion(@RequestBody REGB_X_REGP region) {
 		try {
 			return new ResponseEntity<>(repoRBXRP.save(region), HttpStatus.CREATED);
 		}catch(Exception e) {

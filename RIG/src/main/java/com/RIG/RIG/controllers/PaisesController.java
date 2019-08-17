@@ -17,11 +17,11 @@ public class PaisesController {
 	PaisRepository repo;
 	
 	@GetMapping
-	public ResponseEntity<?> getAllPaises() {
+	public ResponseEntity<?> getAllCountries() {
 		try {
 			return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
 		}catch(Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("There was a problem retrieving all the countries registered.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

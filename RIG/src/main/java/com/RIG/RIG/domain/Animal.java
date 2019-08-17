@@ -14,7 +14,7 @@ public class Animal {
 	@Column
 	private int PELIGRO_EXT;
 	
-	private Animal() {}
+	public Animal() {}
 
 	public Animal(String nOMBRE_CIENTIFICO, String nOMBRE_POPULAR, int pELIGRO_EXT) {
 		super();
